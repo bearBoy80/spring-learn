@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.github.bearboy</groupId>
         <artifactId>spring-framwork-learn</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
