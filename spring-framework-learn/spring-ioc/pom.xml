@@ -10,7 +10,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-ioc-overview</artifactId>
+    <artifactId>spring-ioc</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
