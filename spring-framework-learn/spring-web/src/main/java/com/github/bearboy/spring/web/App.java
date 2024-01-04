@@ -1,4 +1,4 @@
-package com.github.bearboy;
+package com.github.bearboy.spring.web;
 
 /**
  * Hello world!
