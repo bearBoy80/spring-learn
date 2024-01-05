@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--普通模式-->
+    <bean id="user" class="com.github.bearboy.spring.ioc.overview.pojo.User">
+    <property name="age" value="12"/>
+    <property name="name" value="boy80"/>
+    </bean>
+    <!--静态工厂-->
+    <bean id="user-static-method" class="com.github.bearboy.spring.ioc.overview.pojo.User"
+          factory-method="createUser" />
+    <!--通过工厂方法来创建-->
+    <bean id="userFactory" class="com.github.bearboy.spring.ioc.overview.pojo.DefaultUseFactory" />
+    <bean id="user-by-factory" factory-bean="userFactory" factory-method="createUser">
+        <constructor-arg index="0" value="boyName" />
+        <constructor-arg index="1" value="12" />
+    </bean>
+    <!-- 通过FactoryBean来创建user -->
+    <bean id="user-by-factory-bean" class="com.github.bearboy.spring.ioc.overview.pojo.UserFactoryBean" />
+</beans>
