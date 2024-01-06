@@ -42,28 +42,28 @@ public class User implements InitializingBean , DisposableBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("user init by afterPropertiesSet" );
+        System.out.println("user init by afterPropertiesSet" + this );
     }
     @PostConstruct
     public void PostConstruct(){
-        System.out.println("user init by PostConstruct" );
+        System.out.println("user init by PostConstruct" + this );
 
     }
     void init(){
-        System.out.println("user init by @Bean init method" );
+        System.out.println("user init by @Bean init method" + this);
     }
     @PreDestroy
     public void PreDestroy(){
-        System.out.println("user destroy by PreDestroy" );
+        System.out.println("user destroy by PreDestroy" + this );
 
     }
     void destroyMethod(){
-        System.out.println("user destroy by @Bean destroyMethod" );
+        System.out.println("user destroy by @Bean destroyMethod" + this );
     }
 
     @Override
     public void destroy() throws Exception {
-        System.out.println("user destroy by DisposableBean" );
+        System.out.println("user destroy by DisposableBean" + this );
 
     }
 }
