@@ -7,7 +7,7 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.support.GenericApplicationContext;
 
 /**
- * 通过
+ * Bean 实例化的方式
  */
 public class BeanInstantiationDemo {
     public static void main(String[] args) {
