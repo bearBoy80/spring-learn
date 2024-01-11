@@ -39,6 +39,7 @@ public class ApplicationContextValidatorDemo {
         }catch (Exception e){
             e.printStackTrace();
         }
+
         personProcessor.validateName("");
         //关闭容器
         context.close();
@@ -48,6 +49,10 @@ public class ApplicationContextValidatorDemo {
 @Validated
 class PersonProcessor{
 
+    /**
+     * 方法上面添加valid提示要验证person
+     * @param person
+     */
     void process(@Valid Person person){
         System.out.println(person);
     }
