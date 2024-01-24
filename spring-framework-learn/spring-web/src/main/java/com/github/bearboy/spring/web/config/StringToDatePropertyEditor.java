@@ -1,0 +1,28 @@
+package com.github.bearboy.spring.web.config;
+
+import java.beans.PropertyEditorSupport;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+/**
+ * 实现字符串日期转date,
+ * 前置需要熟悉java beans 规范
+ */
+public class StringToDatePropertyEditor extends PropertyEditorSupport {
+    @Override
+    public String getAsText() {
+        Date date = (Date) getValue();
+        LocalDate localDate = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()).toLocalDate();
+        return localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+
+    @Override
+    public void setAsText(String text) throws IllegalArgumentException {
+        LocalDate localDate = LocalDate.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        setValue(date);
+    }
+}
