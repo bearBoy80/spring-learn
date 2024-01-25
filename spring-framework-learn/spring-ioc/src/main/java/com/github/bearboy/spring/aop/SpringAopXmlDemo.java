@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @sina 1.0
  * @Description:
  */
-public class AopDemo {
+public class SpringAopXmlDemo {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("META-INF/aop-view.xml");
         MyService myService = context.getBean("myService", MyService.class);
