@@ -10,7 +10,6 @@
 
     <artifactId>spring-web</artifactId>
     <packaging>war</packaging>
-    <version>1.0</version>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
