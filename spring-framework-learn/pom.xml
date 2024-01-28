@@ -11,6 +11,8 @@
     <modules>
         <module>spring-ioc</module>
         <module>spring-web</module>
+        <module>spring-boot</module>
+        <module>biz-web</module>
     </modules>
 
     <properties>
