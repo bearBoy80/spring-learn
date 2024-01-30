@@ -12,8 +12,14 @@
     <artifactId>biz-web</artifactId>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.github.bearboy</groupId>
+            <artifactId>biz-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 </project>
