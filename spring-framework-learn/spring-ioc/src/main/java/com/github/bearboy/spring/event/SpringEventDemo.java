@@ -1,10 +1,12 @@
 package com.github.bearboy.spring.event;
 
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.ContextStartedEvent;
+import org.springframework.context.event.EventListener;
 
 /**
  * Spring eventListener 实现方式有三种
@@ -19,15 +21,31 @@ public class SpringEventDemo {
         applicationContext.addApplicationListener(new ApplicationListener<ApplicationEvent>() {
             @Override
             public void onApplicationEvent(ApplicationEvent event) {
-                println("收到事件："+event);
+                println("收到事件：" + event);
             }
         });
+        context.register(SpringEventDemo.class);
+        context.register(MyListener.class);
         //启动容器并refresh
         context.refresh();
+        //发布start事件
+        context.start();
         //关闭容器
         context.close();
     }
-    public static void println(Object object){
+
+    public static void println(Object object) {
         System.out.println(object);
+    }
+    @EventListener({ContextStartedEvent.class, ContextRefreshedEvent.class})
+    public void AnnotationMyListener(ApplicationEvent event){
+        System.out.println("异步处理：" + event);
+    }
+}
+class  MyListener implements ApplicationListener<ApplicationEvent>{
+
+    @Override
+    public void onApplicationEvent(ApplicationEvent event) {
+        System.out.println(event);
     }
 }
