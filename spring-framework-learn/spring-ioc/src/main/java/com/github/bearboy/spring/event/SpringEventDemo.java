@@ -7,6 +7,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
+
 
 /**
  * Spring eventListener 实现方式有三种
@@ -14,6 +17,7 @@ import org.springframework.context.event.EventListener;
  * 2.通过ConfigurableApplicationContext.addApplicationListener
  * 3.通过注解方式@EventListener
  */
+@EnableAsync
 public class SpringEventDemo {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
@@ -37,15 +41,17 @@ public class SpringEventDemo {
     public static void println(Object object) {
         System.out.println(object);
     }
+    @Async
     @EventListener({ContextStartedEvent.class, ContextRefreshedEvent.class})
     public void AnnotationMyListener(ApplicationEvent event){
-        System.out.println("异步处理：" + event);
+        System.out.printf("异步线程名称- %s,异步处理：" +
+                event,Thread.currentThread().getName());
     }
 }
 class  MyListener implements ApplicationListener<ApplicationEvent>{
 
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
-        System.out.println(event);
+        System.out.println("MyListener " + event);
     }
 }
